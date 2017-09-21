@@ -7,5 +7,6 @@ public class Main {
         Integer a = new Integer(8);
         Integer b = new Integer(8);
         System.out.println(a.equals(b));
+
     }
 }

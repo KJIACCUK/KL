@@ -39,7 +39,7 @@ public static void main(String[] args) {
     frame.setContentPane(windowContent);
 
     //Задаем размеры и делаем его видимым
-    frame.setSize(400,100);
+    frame.setSize(200,100);
     frame.setVisible(true);
 }
 

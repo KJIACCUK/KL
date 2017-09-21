@@ -1,5 +1,6 @@
 package com.calculator;
 
+import com.intellij.ide.actions.ResizeToolWindowAction;
 import com.intellij.psi.impl.JavaFactoryProvider;
 
 import javax.swing.*;
@@ -28,20 +29,28 @@ public class Calculator {
     JButton buttonC = new JButton("C");
     JButton buttonPlMin = new JButton("+/-");
     JButton buttonX2 = new JButton("x2");
-    JButton buttonDel = new JButton("del");
+    JButton buttonDel = new JButton("<~");
 
     JPanel windowsContent = new JPanel();
-    JTextField displayField = new JTextField(20);
+    JToolBar displayFieldALL = new JToolBar("Инструментальная панель");
+    JTextField displayField = new JTextField("",15);
     JPanel pl = new JPanel();
 
     Calculator(){
         windowsContent = new JPanel();
 
         BorderLayout bl = new BorderLayout();
-        windowsContent.setLayout(bl);
+        //windowsContent.setLayout(bl);
 
-        displayField = new JTextField(20);
+        displayFieldALL= new JToolBar("Инструментальная панель");
+        displayFieldALL.add(new JButton("Кнопка - 1"));
+        displayFieldALL.add(new JButton("Кнопка - 2"));
+        displayFieldALL.add(new JButton("Кнопка - 3"));
+        displayFieldALL.add(new JButton("Кнопка - 4"));
+        windowsContent.add(displayFieldALL, BorderLayout.NORTH);
 
+        displayField = new JTextField("",15);
+        displayField.setHorizontalAlignment(JTextField.RIGHT);
         windowsContent.add("North",displayField);
 
         pl = new JPanel();
@@ -50,6 +59,7 @@ public class Calculator {
 
         pl.add(buttonC);
         pl.add(buttonPlMin);
+        pl.add(buttonDel);
         pl.add(button1);
         pl.add(button2);
         pl.add(button3);
@@ -62,10 +72,10 @@ public class Calculator {
         pl.add(buttonPoint);
         pl.add(button0);
         pl.add(buttonX2);
-        pl.add(buttonDel);
 
 
-        windowsContent.add("Center",pl);
+
+        windowsContent.add("Left",pl);
 
         JPanel p2 = new JPanel();
         GridLayout gl2 = new GridLayout(5,1);
@@ -83,7 +93,9 @@ public class Calculator {
         frame.setContentPane(windowsContent);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(220,300);
+        frame.setSize(320,250);
+        //frame.setLocationRelativeTo(null);
+        frame.setLocation(1600,700);
 
         CalculateEngine calculateEngine = new CalculateEngine(this);
         button0.addActionListener(calculateEngine);

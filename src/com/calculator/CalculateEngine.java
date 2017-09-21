@@ -8,7 +8,7 @@ import java.util.Objects;
 public class CalculateEngine implements ActionListener {
     Calculator parent;
     char selectedAction = ' '; // + - * /
-    double currentResult = 0;
+    double currentResult = 0d;
     CalculateEngine(Calculator parent){
         this.parent = parent;
     }
@@ -64,6 +64,8 @@ public class CalculateEngine implements ActionListener {
         }else if(src == parent.buttonX2){
             currentResult = displayValue*displayValue;
             parent.displayField.setText("" + currentResult);
+        }else if (src == parent.buttonDel) {
+            parent.displayField.setText(dispFieldText.substring(0,dispFieldText.length()-1));
         }else{
             String clickedButtonLabel = clickedButton.getText();
             parent.displayField.setText(dispFieldText + clickedButtonLabel);
